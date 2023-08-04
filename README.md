@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Nextjs and Redux Toolkit testing
 
-## Getting Started
+// Create a Next.js app
+npx create-next-app@latest --ts
 
-First, run the development server:
+// Install Redux Toolkit
+`npm i @reduxjs/toolkit`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+// Install Redux Toolkit
+`npm i react-redux`
+
+//Create Redux and Redux Store
+
+- Redux ( directory)
+  | - features (directory)
+  |- counter (directory)
+  |- counterSlice.ts (file)
+  |- counterSlice
+  | - store.ts (file)
+
+// Create Redux and Redux Store
+
+```
+import { configureStore } from "@reduxjs/toolkit";
+import *Reducer from "./features/*slice";
+export const store = configureStore({
+  reducer: {
+    *Reducer,
+  },
+});
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+// Create Slice
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    STEP 1: Create a Slice
+    Import createSlice, PayloadAction from @reduxjs/toolkit
+    Create a Slice with name, initialState, reducers
+    Export actions from Slice
+    Export reducer from Slice
